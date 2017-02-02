@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html data-ng-app="zenContact" data-ng-strict-di>
+
+<head>
+    <title>ZenContacts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link href="assets/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="assets/css/zencontact.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">ZenContacts</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="contactList.html">My Contacts</a>
+                </li>
+                <li>
+                    <a href="contactEdit.html">Add new contact</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>ZenContacts</h1>
+        <p>Taking care of your people, one at a time.</p>
+    </div>
+
+    <div class="row" data-ng-controller="ContactListController as list">
+
+        <div class="col-xs-12 col-md-4">
+            <div class="well">
+                <form class="form-search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            <input class="form-control" placeholder="Search" data-ng-model="list.search">
+                        </div>
+                        <div data-ng-show="list.search">
+                        <!-- <div data-ng-show="!!list.search"> pour version AngularJS < 1.3
+                        'f', '0', 'false', 'no', 'n', '[]' ne sont plus traités comme des "falsy values" à partir de v1.3 -->
+                            <span data-ng-pluralize
+                                data-count="filteredContacts.length"
+                                data-when="{'0': 'No contact', 'one': 'One contact', 'other': '{} contacts' }">
+                            </span>
+                            for: {{list.search}}
+                        </div>
+                    </div>
+                </form>
+                <ul>
+                    <li data-ng-repeat="contact in list.contacts | filter:list.search | orderBy:'lastName' as filteredContacts">
+                        <a href="">{{::contact.lastName | uppercase}} {{::contact.firstName}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+            <div class="row">
+
+                <div class="contact-card col-xs-12 col-sm-6" data-ng-repeat="contact in filteredContacts">
+                    <div class="contact-card-inner">
+                        <h4>
+                            <a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                            &nbsp;{{::contact.lastName | uppercase}} {{::contact.firstName}}
+                        </h4>
+                        <div class="contact-address">{{::contact.address}}</div>
+                        <div class="contact-phone">{{::contact.phone}}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="vendor/jquery/jquery.js"></script>
+<script src="vendor/bootstrap/bootstrap.js"></script>
+<script src="vendor/angular/angular.js"></script>
+
+<script src="app/app.js"></script>
+<script src="app/sections/sections.module.js"></script>
+<script src="app/sections/list/contact-list.controller.js"></script>
+
+</body>
+
+</html>

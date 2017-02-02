@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ZenContacts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link href="assets/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="assets/css/zencontact.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">ZenContacts</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="contactList.html">My Contacts</a>
+                    </li>
+                    <li class="active">
+                        <a href="contactEdit.html">Add new contact</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1>ZenContacts</h1>
+            <p>Taking care of your people, one at a time.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 col-md-offset-4">
+                            <form>
+                                <div class="form-group">
+                                    <label for="firstName">First name</label>
+                                    <input name="firstName" id="firstName" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last name</label>
+                                    <input name="lastName" id="lastName" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <textarea rows="3" name="address" id="address" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input name="phone" id="phone" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary">Save</button>
+                                    <a class="btn btn-link">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>

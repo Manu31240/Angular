@@ -1,0 +1,45 @@
+<div class="row">
+
+    <div class="col-xs-12 col-md-4">
+        <div class="well">
+            <form class="form-search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <input class="form-control" placeholder="Search" data-ng-model="list.search">
+                    </div>
+                    <div data-ng-show="list.search">
+                        <span data-ng-pluralize
+                            data-count="filteredContacts.length"
+                            data-when="{'0': 'No contact', 'one': 'One contact', 'other': '{} contacts' }">
+                        </span>
+                        for: {{list.search}}
+                    </div>
+                </div>
+            </form>
+            <ul>
+                <li data-ng-repeat="contact in list.contacts | filter:list.search | orderBy:'lastName' as filteredContacts">
+                    <a href="#/edit">{{::contact.lastName | uppercase}} {{::contact.firstName}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-8">
+        <div class="row">
+
+            <div class="contact-card col-xs-12 col-sm-6" data-ng-repeat="contact in filteredContacts">
+                <div class="contact-card-inner">
+                    <h4>
+                        <a href="#/edit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                        &nbsp;{{::contact.lastName | uppercase}} {{::contact.firstName}}
+                    </h4>
+                    <div class="contact-address">{{::contact.address}}</div>
+                    <div class="contact-phone">{{::contact.phone}}</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

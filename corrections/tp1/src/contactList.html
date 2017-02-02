@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html data-ng-app>
+
+<head>
+    <title>ZenContacts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link href="assets/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="assets/css/zencontact.css" rel="stylesheet" media="screen">
+</head>
+
+<body data-ng-init='contacts = [
+{ "id": 0, "lastName": "Wayne", "firstName": "Bruce", "address": "Gotham city", "phone": "555-BATMAN" },
+{ "id": 1, "lastName": "Parker", "firstName": "Peter", "address": "New York", "phone": "555-SPDRMN" },
+{ "id": 2, "lastName": "Storm", "firstName": "Jane", "address": "Baxter building, New York", "phone": "555-INVGRL" },
+{ "id": 3, "lastName": "Richards", "firstName": "Red", "address": "Baxter building, New York", "phone": "555-MRFANT" },
+{ "id": 4, "lastName": "Storm", "firstName": "Johnny", "address": "Baxter building, New York", "phone": "555-TORCH" },
+{ "id": 5, "lastName": "Grimm", "firstName": "Benjamin", "address": "Baxter building, New York", "phone": "555-THING" },
+{ "id": 6, "lastName": "Murdock", "firstName": "Matt", "address": "San Francisco", "phone": "555-DARDVL" },
+{ "id": 7, "lastName": "Stark", "firstName": "Tony", "address": "Stark tower, New York", "phone": "555-IRNMAN" }
+]'>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">ZenContacts</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="contactList.html">My Contacts</a>
+                </li>
+                <li>
+                    <a href="contactEdit.html">Add new contact</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>ZenContacts</h1>
+        <p>Taking care of your people, one at a time.</p>
+    </div>
+
+    <div class="row">
+    <!-- <div class="row" data-ng-cloak> -->
+    <!-- Attention : il est recommandé de ne pas utiliser ng-cloak sur un template entier
+    ou sur une div trop importante afin d'éviter de masquer le contenu au complet de la page -->
+
+        <div class="col-xs-12 col-md-4">
+            <div class="well">
+                <form class="form-search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            <input class="form-control" placeholder="Search" data-ng-model="search">
+                        </div>
+                        Search for: {{search}}
+                        <!-- Search for: <span data-ng-bind="search"></span> -->
+                    </div>
+                </form>
+                <ul>
+                    <li data-ng-repeat="contact in contacts | filter:search | orderBy:'lastName'">
+                    <!-- <li data-ng-repeat="contact in contacts | filter:{ firstName: search } | orderBy:['lastName', '-firstName']"> -->
+                        <a href="">{{::contact.lastName | uppercase}} {{::contact.firstName}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+            <div class="row">
+
+                <div class="contact-card col-xs-12 col-sm-6" data-ng-repeat="contact in contacts | filter:search | orderBy:'lastName'">
+                    <div class="contact-card-inner">
+                        <h4>
+                            <a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                            &nbsp;{{::contact.lastName | uppercase}} {{::contact.firstName}}
+                        </h4>
+                        <div class="contact-address">{{::contact.address}}</div>
+                        <div class="contact-phone">{{::contact.phone}}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="vendor/jquery/jquery.js"></script>
+<script src="vendor/bootstrap/bootstrap.js"></script>
+<script src="vendor/angular/angular.js"></script>
+</body>
+
+</html>
